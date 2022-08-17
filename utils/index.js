@@ -2,7 +2,7 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
 
-const createMarkdown = require('generateMarkdown.js');
+const createMarkdown = require('./utils/generateMarkdown');
 const { resolve } = require("path");
 const { rejects } = require("assert");
 
@@ -54,7 +54,7 @@ const questions = [
     {
         type:"list",
         name:"license",
-        message:"What licenses do you use?",
+        message:"What license do you want to use?",
         choices:[''],
     },
     {
@@ -101,6 +101,7 @@ function init() {
     const markdown = generateMarkdown (answer);
 
     writeToFile ('./readme.md', markdown);
+    
 }
 
 // Function call to initialize app
